@@ -5,6 +5,8 @@ theme = "hugo-theme-mini"
 
 [permalinks]
 posts = "/posts/:title/"
+fragments = "/fragments/:title/"
+diary = "/diary"
 
 [params]
 diary = "diary"
