@@ -1,0 +1,37 @@
+<!doctype html><html lang=en-us><head><title>Why I like Smalltalk - Part 1 of 100 - Documentation | Suraj Yadav</title><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="Why I like Smalltalk: Part 1 of 100 - Documentation 🔗Smalltalk Documentation follows CRC1(Class, Responsibilities & Collaborators) 🔗 For those who don&rsquo;t know what CRC is, it&rsquo;s a tool that helps design objects. A CRC card consists of Class name at the top, responsibilities on the left side & collaborators on the right. Since a card models only one object, it enables rapid prototyping. It is feasible to go through many iterations before settling on an implementation."><meta name=generator content="Hugo 0.99.1"><meta name=ROBOTS content="NOINDEX, NOFOLLOW"><link rel=stylesheet href=/css/style.css><link rel="shortcut icon" href=/images/favicon.ico type=image/x-icon></head><body><nav class=navigation><a href=/><span class=arrow>←</span>Home</a>
+<a href=/fragments>fragments</a>
+<a href=/diary>diary</a></nav><main class=main><section id=single><h1 class=title>Why I like Smalltalk - Part 1 of 100 - Documentation</h1><div class=tip><time datetime="2022-03-11 00:00:00 +0000 UTC">Mar 11, 2022</time>
+<span class=split>·</span>
+<span>315 words</span>
+<span class=split>·</span>
+<span>2 minute read</span></div><div class=content><h1 id=why-i-like-smalltalk-part-1-of-100---documentation>Why I like Smalltalk: Part 1 of 100 - Documentation <a href=#why-i-like-smalltalk-part-1-of-100---documentation class=anchor>🔗</a></h1><h2 id=smalltalk-documentation-follows-crc1class-responsibilities--collaborators>Smalltalk Documentation follows CRC<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>(Class, Responsibilities & Collaborators) <a href=#smalltalk-documentation-follows-crc1class-responsibilities--collaborators class=anchor>🔗</a></h2><ul><li>For those who don&rsquo;t know what CRC is, it&rsquo;s a tool that helps design objects.</li><li>A CRC card consists of Class name at the top, responsibilities on the left side & collaborators on the right.</li><li>Since a card models only one object, it enables rapid prototyping. It is feasible to go through many iterations before settling on an implementation.</li><li><p class=markdown-image><img src=/images/crc-example.gif alt="A sample CRC card"></p></li></ul><h2 id=smalltalk-documentation-talks-to-you>Smalltalk Documentation talks to you <a href=#smalltalk-documentation-talks-to-you class=anchor>🔗</a></h2><p>I noticed this in Pharo&rsquo;s<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup> documentation.
+Classes have comments as they talk to you. They give you an overview of what they are and what they can do. They also tell you how you get started with them with some examples.</p><h3 id=example-from-pharos-documentation-for-point>Example from Pharo&rsquo;s documentation for <code>Point</code> <a href=#example-from-pharos-documentation-for-point class=anchor>🔗</a></h3><pre tabindex=0><code class=language-smalltalk:Point data-lang=smalltalk:Point>    I represent an x,y pair of numbers usually designating a location on the screen.
+
+    My instances are created either using the message `@` or `x:y:` or `r:degrees:` as follows:
+
+    | pt |
+    pt := 10@20.
+    pt x 
+    &gt;&gt;&gt; 10
+    pt y
+    &gt;&gt;&gt; 20 			 
+
+    | pt |
+    pt := Point x: 10 y: 20.
+    pt x 
+    &gt; 10
+    pt y
+    &gt; 20 			 
+
+    I define many nice messages that deal with point such as: 
+    - arithmetic such as \+, \*, reciprocal, min, abs,
+    - comparison \&lt;, \&lt;=, \=, \&gt;, \&gt;=, closeTo: 
+    - geometry such as sideOf:, to:intersects:to:, 
+    - polar coordinates,
+    - extent such as scaleTo:
+    - transformation such as negated, translatedBy:, scaleBy:
+    - rounding with roundTo:, roundUpTo:, truncateTo:, truncated
+</code></pre><p>How cool is that? That makes me wanna take Point for a coffee.
+I have adopted this style of documentation for just about everything.</p><h2 id=inbuilt-support-for-documentation>Inbuilt support for documentation <a href=#inbuilt-support-for-documentation class=anchor>🔗</a></h2><p>The Smalltalk IDE&rsquo;s are one of the most mature IDEs I have ever used. They have inbuilt support for documentation along with the class. Although this might be more of an IDE feature, it has been since the beginning(probably).</p><p><p class=markdown-image><img src=/images/documentation-in-pharo.png alt="Documentation in Pharo"></p></p><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p><a href=http://www.agilemodeling.com/artifacts/crcModel.htm target=_blank rel=noopener>http://www.agilemodeling.com/artifacts/crcModel.htm</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2><p><a href=https://pharo.org target=_blank rel=noopener>https://pharo.org</a>&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></div></section></main><footer id=footer><div class=copyright>© Copyright
+2022
+<span class=split><svg fill="#bbb" width="15" height="15" id="heart-15" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><path d="M13.91 6.75c-1.17 2.25-4.3 5.31-6.07 6.94-.1903.1718-.4797.1718-.67.0C5.39 12.06 2.26 9 1.09 6.75-1.48 1.8 5-1.5 7.5 3.45 10-1.5 16.48 1.8 13.91 6.75z"/></svg></span></div></footer></body></html>

@@ -1,0 +1,82 @@
+<!doctype html><html lang=en-us><head><title>Sweet CICD for my Portfolio | Suraj Yadav</title><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="Sweet CICD for my Portfolio 🔗What my current setup is? 🔗My portfolio is hosted on Github pages. Github pages has support for selecting the directory to host. The options are &ldquo;root&rdquo; or &ldquo;/docs&rdquo; directories.
+I build my portfolio locally in &ldquo;/docs&rdquo; directory and push it. I chose &ldquo;/docs&rdquo; to host in Github pages on master branch.
+This setup is a bit tedious. There are 2 problems.
+ The build is in master repo I have to track the build in git  What I want?"><meta name=generator content="Hugo 0.99.1"><meta name=ROBOTS content="NOINDEX, NOFOLLOW"><link rel=stylesheet href=/css/style.css><link rel="shortcut icon" href=/images/favicon.ico type=image/x-icon></head><body><nav class=navigation><a href=/><span class=arrow>←</span>Home</a>
+<a href=/fragments>fragments</a>
+<a href=/diary>diary</a></nav><main class=main><section id=single><h1 class=title>Sweet CICD for my Portfolio</h1><div class=tip><time datetime="2022-03-23 00:00:00 +0000 UTC">Mar 23, 2022</time>
+<span class=split>·</span>
+<span>546 words</span>
+<span class=split>·</span>
+<span>3 minute read</span></div><div class=content><h1 id=sweet-cicd-for-my-portfolio>Sweet CICD for my Portfolio <a href=#sweet-cicd-for-my-portfolio class=anchor>🔗</a></h1><h2 id=what-my-current-setup-is>What my current setup is? <a href=#what-my-current-setup-is class=anchor>🔗</a></h2><p>My portfolio is hosted on Github pages. Github pages has support for selecting the directory to host.
+The options are &ldquo;root&rdquo; or &ldquo;/docs&rdquo; directories.</p><p>I build my portfolio locally in &ldquo;/docs&rdquo; directory and push it. I chose &ldquo;/docs&rdquo; to host in Github pages on master branch.</p><p>This setup is a bit tedious. There are 2 problems.</p><ul><li>The build is in master repo</li><li>I have to track the build in git</li></ul><h2 id=what-i-want>What I want? <a href=#what-i-want class=anchor>🔗</a></h2><p>I want to solve both problems. I do not want to track the build and I want it to be in seperate repo.</p><h2 id=my-weapon-of-choice---github-actions>My weapon of choice - Github Actions <a href=#my-weapon-of-choice---github-actions class=anchor>🔗</a></h2><p>It has good documentation and I got comfortable with it very fast. There are 4 entities in a GA script.</p><h3 id=events>Events <a href=#events class=anchor>🔗</a></h3><p>When to trigger the script.</p><h3 id=jobs>Jobs <a href=#jobs class=anchor>🔗</a></h3><p>Steps to run in the script. It could be a shell script or an Action.</p><h3 id=actions>Actions <a href=#actions class=anchor>🔗</a></h3><p>Custom applications made to achieve specific functionality. You can write your own actions.</p><h3 id=runners>Runners <a href=#runners class=anchor>🔗</a></h3><p>Environment to run the workflow in. Github provides Windows, MacOS, Ubuntu Linux. You can host your own runners as well.</p><h2 id=automating-it>Automating it <a href=#automating-it class=anchor>🔗</a></h2><p>Lets start by naming our github action first.</p><pre tabindex=0><code class=language-github:name data-lang=github:name>name: build &amp; push to gh-pages branch
+</code></pre><p>I want the workflow to trigger when I push any change on master branch.</p><pre tabindex=0><code class=language-github:on data-lang=github:on>on: 
+  push:
+    branches:
+      - master 
+</code></pre><p>The steps to build is pretty simple, I want to run the workflow on ubuntu-linux.</p><p>The Github action <code>actions/setup-node</code> is pretty self explanatory.
+The Node version on my local is 14.18.1, so I decided to go with 14.x.</p><p>The Github action <a href=https://stackoverflow.com/questions/67131269/github-jobs-what-is-use-actions-checkout target=_blank rel=noopener><code>actions/checkout</code></a> checks out your repo.</p><p>After that its just installing the dependencies by <code>yarn install</code> and then building by <code>yarn build</code></p><pre tabindex=0><code class=language-github:jobs data-lang=github:jobs>jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    
+    - name: yarn install
+      run: |
+        yarn install
+    - name: yarn build
+      run: |
+        yarn run build
+</code></pre><p>After building, I want to push the build directory to <code>gh-pages</code> repo.
+There is an action available for it called <a href=https://github.com/JamesIves/github-pages-deploy-action target=_blank rel=noopener>JamesIves/github-pages-deploy-action</a>.
+This action copies the build dir <code>/docs</code> to <code>gh-pages</code> repo.</p><pre tabindex=0><code class=language-github:deploy data-lang=github:deploy>    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4.2.5
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: docs # The folder the action should deploy.
+</code></pre><p>After the build has been made and copied to <code>gh-pages</code>, I can enable to Github pages for my repo for <code>gh-pages</code> branch on <code>root</code> directory.</p><h2 id=an-issue-i-ran-into>An issue I ran into <a href=#an-issue-i-ran-into class=anchor>🔗</a></h2><p>I have my <code>posts</code> as a git submodule in my portfolio repo. When <code>actions/checkout</code> checked out my portfolio repo, it did not fetch the submodule <code>posts</code>. As a result, no posts were rendered in the build. I solved this by manually cloning the <code>posts</code> repo.</p><pre tabindex=0><code class=language-github:clone data-lang=github:clone>    - name: Clone posts
+      working-directory: ./src
+      run: |
+        git clone https://github.com/jarusll/posts.git
+</code></pre><h2 id=final-script>Final script <a href=#final-script class=anchor>🔗</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-github:cicd.yml data-lang=github:cicd.yml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>build page</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>: 
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>:    
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>master </span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v1</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Use Node.js 14.x</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/setup-node@v1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>node-version</span>: <span style=color:#ae81ff>14.</span><span style=color:#ae81ff>x</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>yarn install</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        </span>        <span style=color:#ae81ff>yarn install</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Clone posts</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>working-directory</span>: <span style=color:#ae81ff>./src</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        </span>        <span style=color:#ae81ff>git clone https://github.com/jarusll/posts.git</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>yarn build</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        </span>        <span style=color:#ae81ff>yarn run build</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>JamesIves/github-pages-deploy-action@v4.2.5</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>branch</span>: <span style=color:#ae81ff>gh-pages</span> <span style=color:#75715e># The branch the action should deploy to.</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>folder</span>: <span style=color:#ae81ff>docs</span> <span style=color:#75715e># The folder the action should deploy.</span>
+</span></span></code></pre></div></div></section></main><footer id=footer><div class=copyright>© Copyright
+2022
+<span class=split><svg fill="#bbb" width="15" height="15" id="heart-15" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><path d="M13.91 6.75c-1.17 2.25-4.3 5.31-6.07 6.94-.1903.1718-.4797.1718-.67.0C5.39 12.06 2.26 9 1.09 6.75-1.48 1.8 5-1.5 7.5 3.45 10-1.5 16.48 1.8 13.91 6.75z"/></svg></span></div></footer></body></html>
