@@ -1,3 +1,3 @@
-[submodule "themes/minimalist-surajyadav"]
-	path = themes/minimalist-surajyadav
-	url = https://github.com:jarusll/minimalist-surajyadav.git
+[submodule "themes/hugo-theme-mini"]
+	path = themes/hugo-theme-mini
+	url = git@github.com:jarusll/hugo-theme-mini.git
