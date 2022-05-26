@@ -7,3 +7,6 @@
 [submodule "content/diary"]
 	path = content/diary
 	url = https://github.com/jarusll/diary.git
+[submodule "content/fragments"]
+	path = content/fragments
+	url = https://github.com/jarusll/fragments.git

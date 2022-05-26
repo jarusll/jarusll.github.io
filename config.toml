@@ -8,3 +8,4 @@ posts = "/posts/:title/"
 
 [params]
 diary = "diary"
+fragments = "fragments"
