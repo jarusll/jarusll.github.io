@@ -1,6 +1,3 @@
-[submodule "hugo-theme-mini"]
-	path = themes/hugo-theme-mini
-	url = https://github.com/jarusll/hugo-theme-mini.git
 [submodule "content/diary"]
 	path = content/diary
 	url = https://github.com/jarusll/diary.git
@@ -10,3 +7,6 @@
 [submodule "content/fragments"]
 	path = content/fragments
 	url = https://github.com/jarusll/fragments.git
+[submodule "themes/hugo-theme-mini"]
+	path = themes/hugo-theme-mini
+	url = https://github.com/jarusll/hugo-theme-mini.git
