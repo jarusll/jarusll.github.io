@@ -1,12 +1,12 @@
-[submodule "themes/hugo-theme-mini"]
+[submodule "hugo-theme-mini"]
 	path = themes/hugo-theme-mini
-	url = git@github.com:jarusll/hugo-theme-mini.git
-[submodule "content/posts"]
-	path = content/posts
-	url = https://github.com/jarusll/posts.git
-[submodule "content/diary"]
+	url = https://github.com/jarusll/hugo-theme-mini.git
+[submodule "diary"]
 	path = content/diary
 	url = https://github.com/jarusll/diary.git
-[submodule "content/fragments"]
+[submodule "fragments"]
 	path = content/fragments
 	url = https://github.com/jarusll/fragments.git
+[submodule "posts"]
+	path = content/posts
+	url = https://github.com/jarusll/posts.git
