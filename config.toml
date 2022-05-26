@@ -2,5 +2,9 @@ baseURL = "https://surajyadav.xyz/"
 languageCode = "en-us"
 title = "Suraj Yadav"
 theme = "hugo-theme-mini"
-[Params]
+
+[permalinks]
+posts = "/posts/:title/"
+
+[params]
 diary = "diary"

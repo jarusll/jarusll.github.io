@@ -1,3 +1,9 @@
 [submodule "themes/hugo-theme-mini"]
 	path = themes/hugo-theme-mini
 	url = git@github.com:jarusll/hugo-theme-mini.git
+[submodule "content/posts"]
+	path = content/posts
+	url = https://github.com/jarusll/posts.git
+[submodule "content/diary"]
+	path = content/diary
+	url = https://github.com/jarusll/diary.git
