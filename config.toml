@@ -13,3 +13,6 @@ fragments = "fragments"
 
 [params.customCSS]
 custom = "css/custom.css"
+
+[Social]
+github = "https://github.com/jarusll"
