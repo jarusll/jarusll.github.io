@@ -7,5 +7,5 @@ p {
 }
 
 body {
-    text-overflow: wrap;
+    word-break: break-word !important;
 }
