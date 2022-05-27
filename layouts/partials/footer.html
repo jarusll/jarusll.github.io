@@ -1,7 +1,11 @@
 <footer id="footer">
+
+    <hr />
+
     {{ if .Site.Social }}
         {{ partial "social.html" . }}
     {{ end }}
+
 
     <!-- <div class="copyright"> -->
     <!-- {{ with .Site.Params.copyright }} -->
@@ -23,12 +27,12 @@
 <!--     {{ end }} -->
 </footer>
 
-{{ range .Site.Params.customJS }}
-    {{ if ( or ( hasPrefix . "http://" ) ( hasPrefix . "https://" ) ) }}
-        <!-- remote js -->
-        <script src="{{ . }}"></script>
-    {{ else }}
-        <!-- local js -->
-        <script src="{{ $.Site.BaseURL }}{{ . }}"></script>
-    {{ end }}
-{{ end }}
+<!-- {{ range .Site.Params.customJS }} -->
+<!--     {{ if ( or ( hasPrefix . "http://" ) ( hasPrefix . "https://" ) ) }} -->
+<!--         <\!-- remote js -\-> -->
+<!--         <script src="{{ . }}"></script> -->
+<!--     {{ else }} -->
+<!--         <\!-- local js -\-> -->
+<!--         <script src="{{ $.Site.BaseURL }}{{ . }}"></script> -->
+<!--     {{ end }} -->
+<!-- {{ end }} -->
