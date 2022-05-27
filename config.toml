@@ -10,3 +10,6 @@ diary = "/diary"
 [params]
 diary = "diary"
 fragments = "fragments"
+
+[params.customCSS]
+custom = "css/custom.css"
