@@ -145,7 +145,7 @@ nav.navigation a {
   right: 6px;
   padding: 8px 12px;
   color: #5badf0;
-  font-size: 13px;
+  font-size: 1rem;
   line-height: 1.35;
   border-radius: 3px;
 }
@@ -172,7 +172,7 @@ nav.navigation a.button {
     right: 6px;
     padding: 8px 8px;
     color: #5badf0;
-    font-size: 13px;
+    font-size: 1rem;
     line-height: 1.35;
     border-radius: 3px;
   }
