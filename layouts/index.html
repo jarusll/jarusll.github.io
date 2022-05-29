@@ -16,6 +16,13 @@
             </div>
           </div>
 
+	    {{ with .Params.tags }}
+		<div class="tags">
+		    {{ range . }}
+			<a class="tag" href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+		    {{ end }}
+		</div>
+	    {{ end}}
           <!-- {{ if ne .Site.Params.hiddenPostSummaryInHomePage true }} -->
           <!--     <div class="summary">{{ $summary | plainify | htmlUnescape }}</div> -->
           <!-- {{ end }} -->
