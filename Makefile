@@ -2,8 +2,6 @@ all: assets update-submodules build
 
 .PHONY: assets
 assets:
-	# copy from fragments
-	cp content/fragments/images/* static/images/.
 	# copy from posts
 	cp content/posts/images/* static/images/.
 	# copy from diary
