@@ -1,11 +1,15 @@
-html[theme='dark-mode'] {
+html {
   filter: invert(1) hue-rotate(180deg);
+}
+
+html img {
+  filter: invert(1) hue-rotate(-180deg);
 }
 
 body {
   line-height: 1;
   font: normal 15px/1.5em 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #404040;
+  background: #e6e6e6;
   line-height: 1.75;
   letter-spacing: 0.008em;
 }
@@ -133,8 +137,6 @@ pre code {
 
 nav.navigation {
   padding: 20px 20px 0;
-  background: #fff;
-  background: rgba(255, 255, 255, 0.9);
   margin: 0 auto;
   text-align: right;
   z-index: 100;
