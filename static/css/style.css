@@ -163,8 +163,8 @@ nav.navigation a.button {
 @media (max-width: 700px) {
   nav.navigation {
     padding: 20px 10px 0 0;
-    background: #fff;
-    background: rgba(255, 255, 255, 0.9);
+    /* background: #fff; */
+    /* background: rgba(255, 255, 255, 0.9); */
     margin: 0 auto;
     text-align: right;
     z-index: 100;
