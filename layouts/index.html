@@ -7,10 +7,7 @@
         {{ $summary := .Summary }}
         {{ $badge := .Params.badge }}
         <section class="item">
-	  <h1 class="title">
-	    <a href='{{ .RelPermalink }}'>{{ $title }}</a>
-	    {{ $badge | markdownify }}
-	  </h1>
+	  <h1 class="title"><a href='{{ .RelPermalink }}'>{{ $title }}</a>{{ $badge | markdownify }}</h1>
           <!--   <div class ="date"> -->
           <!--       <time datetime="{{ .PublishDate }}">{{ i18n "publishDate" . }}</time>   -->
           <!--   </div> -->
