@@ -4,4 +4,4 @@ services:
   hugo:
     entrypoint:
       - hugo
-      - --minify
+      - server
