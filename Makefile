@@ -8,4 +8,4 @@ develop: assets
 	docker-compose up --build
 
 production: assets
-	docker-compose -f docker-compose.yml -f production.yml up --build
+	docker-compose -f docker-compose.yml -f production.yml up --build -d
