@@ -2,14 +2,15 @@
 {{ partial "profile.html" . }}
 
 <div id="list-page">
-    <!-- {{ $pages := .Site.RegularPages }} -->
-    <!-- {{ $paginator := .Paginate (where .Site.RegularPages "Type" "post") }} -->
-    <!-- {{ $paginator := .Paginate ($pages) }} -->
     {{ range where .Site.RegularPages "Type" "posts" }}
         {{ $title := .Title }}
         {{ $summary := .Summary }}
+        {{ $badge := .Params.badge }}
         <section class="item">
-	<h1 class="title"><a href='{{ .RelPermalink }}'>{{ $title }}</a></h1>
+	  <h1 class="title">
+	    <a href='{{ .RelPermalink }}'>{{ $title }}</a>
+	    {{ $badge | markdownify }}
+	  </h1>
           <!--   <div class ="date"> -->
           <!--       <time datetime="{{ .PublishDate }}">{{ i18n "publishDate" . }}</time>   -->
           <!--   </div> -->
@@ -28,27 +29,5 @@
 
         </section>
     {{ end }}
-
-    <!-- {{ if or ($paginator.HasPrev) ($paginator.HasNext) }} -->
-    <!--     <div class="pagination"> -->
-    <!--       {{ if $paginator.HasPrev }} -->
-    <!--           <span class="prev"> -->
-    <!--               <a href="{{.Paginator.Prev.URL}}"> -->
-    <!--                   <span class="arrow">←</span> {{ with .Site.Params.newerPosts }}{{ . }}{{ else }}{{ i18n "postsNewer" }}{{ end }} -->
-    <!--               </a> -->
-    <!--         </span> -->
-    <!--       {{ end }} -->
-          
-    <!--       {{ if $paginator.HasNext }} -->
-    <!--           <span class="next"> -->
-    <!--               <a href="{{.Paginator.Next.URL}}"> -->
-    <!--                   {{ with .Site.Params.olderPosts }}{{ . }}{{ else }}{{ i18n "postsOlder" }}{{ end }} <span class="arrow">→</span> -->
-    <!--               </a> -->
-    <!--           </span> -->
-    <!--       {{ end }} -->
-    <!--     </div> -->
-    <!-- {{ end }} -->
-
-
 </div>
 {{ end }}
