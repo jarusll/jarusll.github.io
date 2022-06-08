@@ -1,4 +1,4 @@
-:80 {
+surajyadav.xyz:443 {
 	# Set this path to your site's directory.
 	root * /var/www/html
 
