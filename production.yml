@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  hugo:
+    entrypoint:
+      - hugo
+      - --minify
+  caddy:
+    image: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./Caddyfile:/etc/caddy/Caddyfile"
+      - "./public:/var/www/html"
