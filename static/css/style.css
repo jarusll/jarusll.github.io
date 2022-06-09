@@ -556,3 +556,20 @@ body {
   font-size: 14px;
   margin-right: 3px;
 }
+
+.notebook {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.notebook-title {
+    margin: 0;
+    padding: 0;
+    margin-right: 1rem;
+    color: #404040;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 400;
+    width: 80%;
+}

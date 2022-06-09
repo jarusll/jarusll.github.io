@@ -2,12 +2,18 @@
 {{ partial "profile.html" . }}
 
 <div id="list-page">
+  {{ range .Site.Data.notebooks }}
+  <div class="notebook">
+    <h2 class="notebook-title">{{ .name }} </h2>
+    <span>{{ .badge | markdownify }}</span>
+  </div>
+  {{ end }}
     {{ range where .Site.RegularPages "Type" "posts" }}
         {{ $title := .Title }}
         {{ $summary := .Summary }}
         {{ $badge := .Params.badge }}
         <section class="item">
-	  <h1 class="title"><a href='{{ .RelPermalink }}'>{{ $title }}</a>{{ $badge | markdownify }}</h1>
+	  <h1 class="title"><a href='{{ .RelPermalink }}'>{{ $title }}</a></h1>
           <!--   <div class ="date"> -->
           <!--       <time datetime="{{ .PublishDate }}">{{ i18n "publishDate" . }}</time>   -->
           <!--   </div> -->

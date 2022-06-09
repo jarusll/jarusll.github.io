@@ -1,0 +1,10 @@
+[
+    {
+    "name": "1D Peak finding",
+    "badge": "[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jarusll/notebooks.git/master?labpath=peek-finding-1-d.ipynb)"
+},
+    {
+    "name": "Redux primer",
+    "badge": "[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jarusll/notebooks.git/master?labpath=%2Fredux-primer.ipynb)"
+}
+]
