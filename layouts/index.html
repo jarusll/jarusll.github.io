@@ -2,12 +2,12 @@
 {{ partial "profile.html" . }}
 
 <div id="list-page">
-  {{ range .Site.Data.notebooks }}
-  <div class="notebook">
-    <h2 class="notebook-title">{{ .name }} </h2>
-    <span>{{ .badge | markdownify }}</span>
-  </div>
-  {{ end }}
+  <!-- {{ range .Site.Data.notebooks }} -->
+  <!-- <div class="notebook"> -->
+  <!--   <h2 class="notebook-title">{{ .name }} </h2> -->
+  <!--   <span>{{ .badge | markdownify }}</span> -->
+  <!-- </div> -->
+  <!-- {{ end }} -->
     {{ range where .Site.RegularPages "Type" "posts" }}
         {{ $title := .Title }}
         {{ $summary := .Summary }}
