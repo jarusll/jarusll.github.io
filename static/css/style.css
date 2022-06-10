@@ -573,3 +573,8 @@ body {
     font-weight: 400;
     width: 80%;
 }
+
+.highlight pre {
+  filter: invert(1) hue-rotate(-180deg);
+}
+
