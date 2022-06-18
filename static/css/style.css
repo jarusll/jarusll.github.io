@@ -598,3 +598,7 @@ p {
 .example {
     overflow-x: scroll;
 }
+
+img {
+    border-radius: 0.4rem;
+}
