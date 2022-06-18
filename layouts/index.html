@@ -13,7 +13,9 @@
         {{ $summary := .Summary }}
         {{ $badge := .Params.badge }}
         <section class="item">
+	  {{ if not .Params.hidden }}
 	  <h1 class="title"><a href='{{ .RelPermalink }}'>{{ $title }}</a></h1>
+	  {{ end }}
           <!--   <div class ="date"> -->
           <!--       <time datetime="{{ .PublishDate }}">{{ i18n "publishDate" . }}</time>   -->
           <!--   </div> -->

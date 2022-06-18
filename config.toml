@@ -4,12 +4,11 @@ title = "Suraj Yadav"
 
 [permalinks]
 posts = "/posts/:title/"
-fragments = "/fragments/:title/"
 diary = "/diary"
 
 [params]
 diary = "diary"
-fragments = "fragments"
+awesome = "awesome"
 
 [Social]
 github = "https://github.com/jarusll"

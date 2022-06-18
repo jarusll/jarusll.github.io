@@ -3,6 +3,7 @@
 		<a href="{{ "/" | relURL }}"> <span class="arrow">←</span>{{ with .Site.Params.home }}{{ . }}{{ else }}{{ i18n "home" }}{{ end }}</a>
 	{{ end }}
 	<a href="{{ "/diary" | relURL }}">{{ with .Site.Params.diary }}{{ . }}{{ else }}{{ i18n "diary" }}{{ end }}</a>
+	<a href="{{ "/posts/awesome" | relURL }}">{{ with .Site.Params.awesome }}{{ . }}{{ else }}{{ i18n "diary" }}{{ end }}</a>
 
 	{{ range $element := .Site.Params.Links }}
 		<a href="{{ $element.path }}">{{ $element.name }}</a>
