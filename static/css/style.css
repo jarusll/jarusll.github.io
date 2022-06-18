@@ -581,7 +581,7 @@ td {
     white-space: nowrap !important;
 }
 
-table, .verbatim {
+table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
@@ -593,4 +593,8 @@ ul, ol {
 
 p {
     font-size: 1rem !important;
+}
+
+.example {
+    overflow-x: scroll;
 }
