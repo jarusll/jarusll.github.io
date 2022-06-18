@@ -296,7 +296,6 @@ nav.navigation a.button {
   font-size: 20px;
   font-weight: 400;
   margin: 0;
-  width: 80%;
 }
 
 #list-page .title a {
@@ -366,8 +365,8 @@ nav.navigation a.button {
 
 @media (max-width: 700px) {
   #single {
-    padding: 0 18px;
-    margin: 20px auto 0 auto;
+    padding: 0.1rem;
+    margin: auto;
   }
   #single .title {
     font-size: 24px;
@@ -578,3 +577,20 @@ body {
   filter: invert(1) hue-rotate(-180deg);
 }
 
+td {
+    white-space: nowrap !important;
+}
+
+table, .verbatim {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+ul, ol {
+    padding: 0 0.7rem;
+}
+
+p {
+    font-size: 1rem !important;
+}
